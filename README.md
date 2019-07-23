@@ -9,4 +9,4 @@ You can see it in action on my [website](https://igniparoustempest.github.io/pyr
 
 ## Notes
 
-This is probably quite a poor implementation. Please don't fault me, I am still teaching myself javascript.
+This is probably quite a poor implementation. Please don't fault me, I am teaching myself javascript.
