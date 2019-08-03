@@ -79,9 +79,18 @@ class MoveString {
     static resetStock() {return "Reset stock.";}
 }
 
-const GameStates = Object.freeze({"won": 1, "lost": 2, "inProgress": 3});
+const GameStates = Object.freeze({"won": true, "lost": false});
 
-function solve(pyramidArray, stockArray, stockIndex, remainingStocks, moveArray) {
+/**
+ * Solves a Pyramid solitaire game.
+ * @param pyramidArray The cards in the pyramid, starting in the top card. The cards are in left-to-right, then top-to-bottom order.
+ * @param stockArray The cards in the stock.
+ * @param stockIndex The index of the top stock card.
+ * @param remainingStocks The number of times the stock can be reset.
+ * @param moveArray The list of moves that have been made to get a deck in this configuration.
+ * @returns {*[]|[*, *]|[*, *]|[*, *]|[*, *]|*}
+ */
+function solve(pyramidArray, stockArray, stockIndex = 0, remainingStocks = 3, moveArray = []) {
     let newMoveArray = JSON.parse(JSON.stringify(moveArray));
     let pyramid = new Pyramid(pyramidArray);
 
@@ -197,5 +206,7 @@ function solve(pyramidArray, stockArray, stockIndex, remainingStocks, moveArray)
     }
 
     // This node was useless
-    return [GameStates.inProgress, moveArray];
+    return [GameStates.lost, moveArray];
 }
+
+exports.solve = solve;
